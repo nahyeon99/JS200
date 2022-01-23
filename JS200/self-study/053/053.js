@@ -18,20 +18,25 @@ class Product {
 }
 
 // 상속의 종류
-// 1. prototype 기반의 상속
+// 1. 생성자함수의 prototype 기반의 상속
 // 2. 클래스로 상속(ES6) -> 정적 메소드 또한 상속하게 된다.
 
+// 폐기가 가능한 상품 클래스를 정의, Product 클래스를 상속
 class DeposableProduct extends Product {
-  // 폐기가 가능한 상품 클래스를 정의, Product 클래스를 상속
-
   depose() {
     this.deposed = true;
   }
 }
+// 일반메소드를 호출할 때
+// const gum = new Product();
+// gum.build("껌", 1000);
 
-const gum = Product.build("껌", 1000);
-console.log(gum);
+// 정적메소드를 호출할 때
+const candy = Product.build("사탕", 1000);
+console.log(candy);
 
 const clothes = new DeposableProduct(1, "옷", 2000);
+console.log(clothes);
+
 const taxPrice = DeposableProduct.getTaxPrice(clothes);
 console.log(taxPrice);
